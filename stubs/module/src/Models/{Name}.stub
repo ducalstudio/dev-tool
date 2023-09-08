@@ -1,0 +1,25 @@
+<?php
+
+namespace Ducal\{Module}\Models;
+
+use Ducal\Base\Casts\SafeContent;
+use Ducal\Base\Enums\BaseStatusEnum;
+use Ducal\Base\Models\BaseModel;
+
+/**
+ * @method static \Ducal\Base\Models\BaseQueryBuilder<static> query()
+ */
+class {Name} extends BaseModel
+{
+    protected $table = '{names}';
+
+    protected $fillable = [
+        'name',
+        'status',
+    ];
+
+    protected $casts = [
+        'status' => BaseStatusEnum::class,
+        'name' => SafeContent::class,
+    ];
+}

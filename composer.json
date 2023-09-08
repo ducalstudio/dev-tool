@@ -1,0 +1,42 @@
+{
+    "name": "ducal/dev-tool",
+    "description": "Dev tool commands for Ducal CMS",
+    "type": "package",
+    "license": "MIT",
+    "keywords": [
+        "ducal",
+        "ducal cms",
+        "ducal platform",
+        "ducal dev tools"
+    ],
+    "homepage": "https://ducalstudio.com",
+    "authors": [
+        {
+            "name": "Ducal Studio",
+            "email": "contact@ducalstudio.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Ducal\\DevTool\\": "src"
+        }
+    },
+    "require": {
+
+    },
+    "require-dev": {
+        "laravel/pint": "^1.4.0",
+        "phpunit/phpunit": "^9.0|^10.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ducal\\DevTool\\Providers\\DevToolServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable"
+}
