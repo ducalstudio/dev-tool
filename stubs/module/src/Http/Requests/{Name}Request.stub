@@ -1,6 +1,6 @@
 <?php
 
-namespace Ducal\{Module}\Http\Requests;
+namespace {Module}\Http\Requests;
 
 use Ducal\Base\Enums\BaseStatusEnum;
 use Ducal\Support\Http\Requests\Request;
@@ -11,7 +11,7 @@ class {Name}Request extends Request
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:220',
+            'name' => ['required', 'string', 'max:220'],
             'status' => Rule::in(BaseStatusEnum::values()),
         ];
     }

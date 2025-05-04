@@ -1,8 +1,8 @@
 {
     "id": "ducal/{-module}",
-    "name": "{Module}",
-    "namespace": "Ducal\\{Module}\\",
-    "provider": "Ducal\\{Module}\\Providers\\{Module}ServiceProvider",
+    "name": "{Name}",
+    "namespace": "Ducal\\{Name}\\",
+    "provider": "Ducal\\{Name}\\Providers\\{Name}ServiceProvider",
     "author": null,
     "url": null,
     "version": "1.0.0",

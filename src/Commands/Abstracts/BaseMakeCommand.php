@@ -3,6 +3,7 @@
 namespace Ducal\DevTool\Commands\Abstracts;
 
 use Ducal\Base\Facades\BaseHelper;
+use Ducal\DevTool\Helper;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
@@ -91,7 +92,7 @@ abstract class BaseMakeCommand extends Command
         }
 
         foreach ($paths as $path) {
-            $path = $location . DIRECTORY_SEPARATOR . $path;
+            $path = Helper::joinPaths([$location, $path]);
 
             $newPath = $this->transformFileName($pattern, $path);
             rename($path, $newPath);

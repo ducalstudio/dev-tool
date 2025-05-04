@@ -1,20 +1,19 @@
 {
-  "name": "ducal/{-name}",
-  "description": "{Name} package",
-  "type": "package",
-  "autoload": {
-    "psr-4": {
-      "Ducal\\{Name}\\": "src"
+    "name": "ducal/{-name}",
+    "description": "{Name} package",
+    "type": "package",
+    "autoload": {
+        "psr-4": {
+            "Ducal\\{Name}\\": "src"
+        }
+    },
+    "require": {
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ducal\\{Name}\\Providers\\{Name}ServiceProvider"
+            ]
+        }
     }
-  },
-  "require": {
-
-  },
-  "extra":{
-    "laravel":{
-      "providers":[
-        "Ducal\\{Name}\\Providers\\{Name}ServiceProvider"
-      ]
-    }
-  }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ducal\{Module};
+namespace {Module};
 
 use Illuminate\Support\Facades\Schema;
 use Ducal\PluginManagement\Abstracts\PluginOperationAbstract;

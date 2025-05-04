@@ -1,14 +1,13 @@
 <?php
 
-namespace Ducal\{Module}\Providers;
+namespace {Module}\Providers;
 
-use Ducal\{Module}\Models\{Name};
 use Ducal\Base\Facades\DashboardMenu;
-use Ducal\Base\Traits\LoadAndPublishDataTrait;
 use Ducal\Base\Supports\ServiceProvider;
-use Illuminate\Routing\Events\RouteMatched;
+use Ducal\Base\Traits\LoadAndPublishDataTrait;
+use {Module}\Models\{Name};
 
-class {Module}ServiceProvider extends ServiceProvider
+class {Name}ServiceProvider extends ServiceProvider
 {
     use LoadAndPublishDataTrait;
 
@@ -29,12 +28,12 @@ class {Module}ServiceProvider extends ServiceProvider
             ]);
         }
 
-        $this->app['events']->listen(RouteMatched::class, function () {
+        DashboardMenu::default()->beforeRetrieving(function () {
             DashboardMenu::registerItem([
                 'id' => 'cms-{types}-{-name}',
                 'priority' => 5,
                 'parent_id' => null,
-                'name' => '{types}/{-module}::{-name}.name',
+                'name' => '{types}/{-name}::{-name}.name',
                 'icon' => 'fa fa-list',
                 'url' => route('{-name}.index'),
                 'permissions' => ['{-name}.index'],

@@ -8,9 +8,13 @@ use Ducal\DevTool\Commands\LocaleRemoveCommand;
 use Ducal\DevTool\Commands\Make\ControllerMakeCommand;
 use Ducal\DevTool\Commands\Make\FormMakeCommand;
 use Ducal\DevTool\Commands\Make\ModelMakeCommand;
-use Ducal\DevTool\Commands\Make\RepositoryMakeCommand;
+use Ducal\DevTool\Commands\Make\PanelSectionMakeCommand;
 use Ducal\DevTool\Commands\Make\RequestMakeCommand;
 use Ducal\DevTool\Commands\Make\RouteMakeCommand;
+use Ducal\DevTool\Commands\Make\SettingControllerMakeCommand;
+use Ducal\DevTool\Commands\Make\SettingFormMakeCommand;
+use Ducal\DevTool\Commands\Make\SettingMakeCommand;
+use Ducal\DevTool\Commands\Make\SettingRequestMakeCommand;
 use Ducal\DevTool\Commands\Make\TableMakeCommand;
 use Ducal\DevTool\Commands\PackageCreateCommand;
 use Ducal\DevTool\Commands\PackageMakeCrudCommand;
@@ -38,7 +42,6 @@ class CommandServiceProvider extends ServiceProvider
             RequestMakeCommand::class,
             FormMakeCommand::class,
             ModelMakeCommand::class,
-            RepositoryMakeCommand::class,
             PackageCreateCommand::class,
             PackageMakeCrudCommand::class,
             PackageRemoveCommand::class,
@@ -46,11 +49,36 @@ class CommandServiceProvider extends ServiceProvider
             RebuildPermissionsCommand::class,
             LocaleRemoveCommand::class,
             LocaleCreateCommand::class,
-            PluginCreateCommand::class,
-            PluginMakeCrudCommand::class,
-            ThemeCreateCommand::class,
-            WidgetCreateCommand::class,
-            WidgetRemoveCommand::class,
         ]);
+
+        if (version_compare(get_core_version(), '7.0.0', '>=')) {
+            $this->commands([
+                PanelSectionMakeCommand::class,
+                SettingControllerMakeCommand::class,
+                SettingRequestMakeCommand::class,
+                SettingFormMakeCommand::class,
+                SettingMakeCommand::class,
+            ]);
+        }
+
+        if (class_exists(\Ducal\PluginManagement\Providers\PluginManagementServiceProvider::class)) {
+            $this->commands([
+                PluginCreateCommand::class,
+                PluginMakeCrudCommand::class,
+            ]);
+        }
+
+        if (class_exists(\Ducal\Theme\Providers\ThemeServiceProvider::class)) {
+            $this->commands([
+                ThemeCreateCommand::class,
+            ]);
+        }
+
+        if (class_exists(\Ducal\Widget\Providers\WidgetServiceProvider::class)) {
+            $this->commands([
+                WidgetCreateCommand::class,
+                WidgetRemoveCommand::class,
+            ]);
+        }
     }
 }
